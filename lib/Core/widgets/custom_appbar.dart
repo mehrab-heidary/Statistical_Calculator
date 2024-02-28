@@ -41,58 +41,56 @@ class AppbarCustomSelection extends StatelessWidget {
       return Row(
         children: [
           InkWell(
-              onTap: () => customApbarClr.selectedOpration(1),
-              child: Obx(() {
-                return Container(
-                  width: AppSize.setFullsizeWidth / 2,
-                  decoration: BoxDecoration(
-                      color: selectedDarkLight == true
-                          ? customApbarClr.selectedSection == 1
-                              ? AppColors.gery6
-                              : AppColors.gery5
-                          : customApbarClr.selectedSection == 1
-                              ? AppColors.gery1
-                              : AppColors.gery3),
-                  child: Center(
-                    child: Text(
-                      nameSections[1],
-                      style: selectedDarkLight == true
-                          ? customApbarClr.selectedSection == 1
-                              ? MyAppTextStyle.getBold(
-                                  color: AppColors.gery3, fontSize: 20)
-                              : MyAppTextStyle.medium(
-                                  color: AppColors.gery7, fontSize: 20)
-                          : customApbarClr.selectedSection == 1
-                              ? MyAppTextStyle.getBold(
-                                  color: AppColors.gery7, fontSize: 20)
-                              : MyAppTextStyle.medium(
-                                  color: AppColors.gery6, fontSize: 20),
-                    ),
-                  ),
-                );
-              })),
-          InkWell(
-              onTap: () => customApbarClr.selectedOpration(0),
+              onTap: () => customApbarClr.selectedSection.value = 1,
               child: Container(
                 width: AppSize.setFullsizeWidth / 2,
                 decoration: BoxDecoration(
                     color: selectedDarkLight == true
-                        ? customApbarClr.selectedSection == 0
+                        ? customApbarClr.selectedSection.value == 1
                             ? AppColors.gery6
                             : AppColors.gery5
-                        : customApbarClr.selectedSection == 0
+                        : customApbarClr.selectedSection.value == 1
+                            ? AppColors.gery1
+                            : AppColors.gery3),
+                child: Center(
+                  child: Text(
+                    nameSections[1],
+                    style: selectedDarkLight == true
+                        ? customApbarClr.selectedSection.value == 1
+                            ? MyAppTextStyle.getBold(
+                                color: AppColors.gery3, fontSize: 20)
+                            : MyAppTextStyle.medium(
+                                color: AppColors.gery7, fontSize: 20)
+                        : customApbarClr.selectedSection.value == 1
+                            ? MyAppTextStyle.getBold(
+                                color: AppColors.gery7, fontSize: 20)
+                            : MyAppTextStyle.medium(
+                                color: AppColors.gery6, fontSize: 20),
+                  ),
+                ),
+              )),
+          InkWell(
+              onTap: () => customApbarClr.selectedSection.value = 0,
+              child: Container(
+                width: AppSize.setFullsizeWidth / 2,
+                decoration: BoxDecoration(
+                    color: selectedDarkLight == true
+                        ? customApbarClr.selectedSection.value == 0
+                            ? AppColors.gery6
+                            : AppColors.gery5
+                        : customApbarClr.selectedSection.value == 0
                             ? AppColors.gery1
                             : AppColors.gery3),
                 child: Center(
                   child: Text(
                     nameSections[0],
                     style: selectedDarkLight == true
-                        ? customApbarClr.selectedSection == 0
+                        ? customApbarClr.selectedSection.value == 0
                             ? MyAppTextStyle.getBold(
                                 color: AppColors.gery3, fontSize: 20)
                             : MyAppTextStyle.medium(
                                 color: AppColors.gery7, fontSize: 20)
-                        : customApbarClr.selectedSection == 0
+                        : customApbarClr.selectedSection.value == 0
                             ? MyAppTextStyle.getBold(
                                 color: AppColors.gery7, fontSize: 20)
                             : MyAppTextStyle.medium(
