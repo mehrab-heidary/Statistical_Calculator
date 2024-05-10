@@ -515,107 +515,110 @@ class ResultView extends StatelessWidget {
     return SizedBox(
       width: AppSize.setFullsizeHeight,
       child: Center(
-        child: Column(
-          children: [
-            Container(
-              height: (AppSize.boardInputDate + AppSize.boardButtons) / 2.3,
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.vertical,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: (AppSize.boardInputDate + AppSize.boardButtons) / 2.3,
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    child: CustomDataTable(
-                      columnName: columnName,
-                      rowName: probabilityControl.arryDatatable,
-                      probabilityControl: probabilityControl,
-                      probabilityModel: probabilityModel,
-                    )),
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      child: CustomDataTable(
+                        columnName: columnName,
+                        rowName: probabilityControl.arryDatatable,
+                        probabilityControl: probabilityControl,
+                        probabilityModel: probabilityModel,
+                      )),
+                ),
               ),
-            ),
-            Container(
-              height: AppSize.boardButtons / 1.37,
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              margin: const EdgeInsets.only(top: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(resultFeildName[0],
-                            style: MyAppTextStyle.getBold(
-                                color: themedata.colorScheme.onSecondary,
-                                fontSize: 18.5)),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                            height: AppSize.boardButtons / 1.75,
-                            width: AppSize.setFullsizeWidth / 2.6,
-                            padding: const EdgeInsets.all(3),
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
-                                border: Border.all(
-                                    color: themedata.colorScheme.onPrimary,
-                                    width: 2)),
-                            child: CustomListBox(
-                              probabilityModel: probabilityModel,
+              Container(
+                height: AppSize.boardButtons / 1.37,
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                margin: const EdgeInsets.only(top: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Center(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(resultFeildName[0],
+                              style: MyAppTextStyle.getBold(
+                                  color: themedata.colorScheme.onSecondary,
+                                  fontSize: 18.5)),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                              height: AppSize.boardButtons / 1.75,
+                              width: AppSize.setFullsizeWidth / 2.6,
+                              padding: const EdgeInsets.all(3),
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                  border: Border.all(
+                                      color: themedata.colorScheme.onPrimary,
+                                      width: 2)),
+                              child: CustomListBox(
+                                probabilityModel: probabilityModel,
+                                probabilityControl: probabilityControl,
+                                listValue:
+                                    ProbabilityStatisticsModel.arryListBox,
+                              )),
+                        ],
+                      ),
+                    ),
+                    Center(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CustomResultView(
                               probabilityControl: probabilityControl,
-                              listValue: ProbabilityStatisticsModel.arryListBox,
-                            )),
-                      ],
-                    ),
-                  ),
-                  Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        CustomResultView(
-                            probabilityControl: probabilityControl,
-                            probabilityModel: probabilityModel,
-                            nameField: resultFeildName[1],
-                            viewValue: probabilityControl.R.toString()),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        CustomResultView(
-                            probabilityControl: probabilityControl,
-                            probabilityModel: probabilityModel,
-                            nameField: resultFeildName[2],
-                            viewValue: probabilityControl.L.toString()),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        CustomResultView(
-                            probabilityControl: probabilityControl,
-                            probabilityModel: probabilityModel,
-                            nameField: resultFeildName[3],
-                            viewValue: probabilityControl.K.toString()),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        CustomButtons(
-                          name: resultFeildName[4],
-                          backgroundGradient: AppColors.gradientColor,
-                          textColor: themedata.colorScheme.onError,
-                          controller: ProbabilityStatisticsView
-                              .probabilityControl.textController,
-                          onTapPosVoid: () {
-                            probabilityControl.clearButton();
-                            probabilityControl.showResultPage.value = false;
-                          },
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
+                              probabilityModel: probabilityModel,
+                              nameField: resultFeildName[1],
+                              viewValue: probabilityControl.R.toString()),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          CustomResultView(
+                              probabilityControl: probabilityControl,
+                              probabilityModel: probabilityModel,
+                              nameField: resultFeildName[2],
+                              viewValue: probabilityControl.L.toString()),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          CustomResultView(
+                              probabilityControl: probabilityControl,
+                              probabilityModel: probabilityModel,
+                              nameField: resultFeildName[3],
+                              viewValue: probabilityControl.K.toString()),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          CustomButtons(
+                            name: resultFeildName[4],
+                            backgroundGradient: AppColors.gradientColor,
+                            textColor: themedata.colorScheme.onError,
+                            controller: ProbabilityStatisticsView
+                                .probabilityControl.textController,
+                            onTapPosVoid: () {
+                              probabilityControl.clearButton();
+                              probabilityControl.showResultPage.value = false;
+                            },
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
